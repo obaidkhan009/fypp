@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to ImageHub</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            background-image: url('./static/images/signup.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            transition: background-color 0.5s ease;
+        }
+
+        h1 {
+            font-size: 48px;
+            color: #fff;
+            margin-bottom: 20px;
+            transition: color 0.5s ease;
+        }
+
+        p {
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 40px;
+            transition: color 0.5s ease;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 20px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.5s ease;
+            text-decoration: none; /* Remove underline from anchor */
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to ImageHub</h1>
+        <p>Discover and share amazing images.</p>
+        <a href="{% url 'login_view' %}" class="btn">Get Started</a>
+    </div>
+</body>
+</html>

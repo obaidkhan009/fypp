@@ -1,0 +1,85 @@
+<!-- myapp/templates/input_form.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <form action="{% url 'generate_images' %}" method="POST" id="imageForm" class="mx-auto mt-5">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="prompt" class="font-weight-bold">Enter Your Thoughts Here (Prompt)</label>
+            <textarea id="prompt" name="prompt_1" class="form-control" rows="5" required></textarea>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="aspect_ratio" class="font-weight-bold">Height width ratio</label>
+                <select id="aspect_ratio" name="aspect_ratio" class="form-control" required>
+                    <option value="1:1">1:1</option>
+                    <option value="16:9">16:9</option>
+                    <option value="4:3">4:3</option>
+                </select>
+            </div>
+        
+            <div class="form-group col-md-4">
+                <label for="num_images" class="font-weight-bold">Number of Images</label>
+                <input type="number" id="num_images" name="num_images" class="form-control" required>
+            </div>
+            
+            <!-- Add option for selecting the image generator  -->
+<div class="form-group col-md-4">
+    <label for="image_generator" class="font-weight-bold">Select Image Generator</label>
+    <select id="image_generator" name="model_choice" class="form-control" required>
+        <option value="HuggingFace">HuggingFace</option>  <!-- Ensure all options are here -->
+        <option value="animagine">animagine</option>
+        <option value="stableDiffusion">stableDiffusion</option>
+        <option value="AbsoluteReality">AbsoluteReality</option>
+        <option value="PlaygroundV2">PlaygroundV2</option>
+    </select>
+</div>
+        </div>
+
+        <!-- Additional options for specifying style, color scheme, or theme -->
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="style" class="font-weight-bold">Select Style</label>
+                <select id="style" name="style" class="form-control">
+                    <option value="default">Default</option>
+                    <option value="abstract">Abstract</option>
+                    <option value="modern">Modern</option>
+                    <!-- Add more style options -->
+                </select>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="color_scheme" class="font-weight-bold">Select Color Scheme</label>
+                <select id="color_scheme" name="color_scheme" class="form-control">
+                    <option value="default">Default</option>
+                    <option value="monochrome">Monochrome</option>
+                    <option value="vibrant">Vibrant</option>
+                    <!-- Add more color scheme options -->
+                </select>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="theme" class="font-weight-bold">Select Theme</label>
+                <select id="theme" name="theme" class="form-control">
+                    <option value="default">Default</option>
+                    <option value="nature">Nature</option>
+                    <option value="technology">Technology</option>
+                    <!-- Add more theme options -->
+                </select>
+            </div>
+        </div>
+
+        <button id="generate-btn" type="submit" class="btn btn-success">Generate Images</button>
+
+        <div class="loading mt-3">
+            <div class="loading-bar"></div>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}
